@@ -62,7 +62,7 @@ arcpy.CalculateField_management(pointsAlongLine, "Distance", "math.sqrt( ( !POIN
 geologyPoints = arcpy.SpatialJoin_analysis(pointsAlongLine, geologyFC, 'in_memory\geologyPointsT', "JOIN_ONE_TO_ONE", "KEEP_ALL", "", "INTERSECT", "", "")
 
 # Interpolate the points along the plan profile line with the DEM
-geologyPoints3D = arcpy.InterpolateShape_3d(DEM, geologyPoints, 'in_memory\geologyPoints3DT', "", "1", "BILINEAR", "DENSIFY", "0", "EXCLUDE")
+geologyPoints3D = arcpy.InterpolateShape_3d(DEM, geologyPoints, 'in_memory\geologyPoints3DT', "", "1", "BILINEAR", "DENSIFY", "0")
 
 # Add X Y Z Coordinates
 arcpy.AddXY_management(geologyPoints3D)
@@ -110,7 +110,7 @@ arcpy.AddField_management(planStrDataFC, "Distance", "DOUBLE", "", "", "", "", "
 arcpy.CalculateField_management(planStrDataFC, "Distance", "math.sqrt( ( !POINT_X! - "+str(xStart) +")**2 + ( !POINT_Y! - "+str(yStart) +")**2 )", "PYTHON_9.3", "")
 
 # Interpolate the structural data in plan profile line with the DEM
-strData3D = arcpy.InterpolateShape_3d(DEM, planStrDataFC, 'in_memory\strData3dT', "", "1", "BILINEAR", "DENSIFY", "0", "EXCLUDE")
+strData3D = arcpy.InterpolateShape_3d(DEM, planStrDataFC, 'in_memory\strData3dT', "", "1", "BILINEAR", "DENSIFY", "0")
 
 # Add X Y Z Coordinates
 arcpy.AddXY_management(strData3D)
