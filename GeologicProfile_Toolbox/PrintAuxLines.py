@@ -34,7 +34,7 @@ for row1 in cursor1:
     Bz3 = Bzm + 180
     I_D = (row1.getValue("I_D"))
     xi = (row1.getValue("Distance"))
-    yi = (row1.getValue("POINT_Z"))
+    yi = (row1.getValue("POINT_Y"))
     start = arcpy.PointGeometry(arcpy.Point(xi,yi), sr)
     if Bzm == 0 and I_D == " ":
         end = start.pointFromAngleAndDistance(Bz3,500,"PLANAR")
@@ -58,7 +58,7 @@ for row2 in cursor2:
     Bz2 = Bzm
     I_D = (row2.getValue("I_D"))
     xi = (row2.getValue("Distance"))
-    yi = (row2.getValue("POINT_Z"))
+    yi = (row2.getValue("POINT_Y"))
     start = arcpy.PointGeometry(arcpy.Point(xi,yi), sr)
     if I_D == "Izq":
         end = start.pointFromAngleAndDistance(Bz1,500,"PLANAR")
